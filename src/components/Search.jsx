@@ -13,6 +13,8 @@ const Search = ({ searchTerm, setSearchTerm }) => {
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
         </div>
+        {/* <div className="text-white text-3xl">{searchTerm}</div> */}
+        {/* this was just a test to see how react works */}
     </div>
   )
 }

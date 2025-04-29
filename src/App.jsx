@@ -6,6 +6,7 @@ import FilterBar from './components/FilterBar'
 import {useDebounce} from 'react-use'
 import { useState, useEffect, useRef } from 'react'
 import {updateSearchCount, getTrendingMovies} from './appwrite.js'
+import { Link } from 'react-router-dom'
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -160,12 +161,14 @@ const App = () => {
                                 >◀
                             </button>       
                         
-
+                        
                         <ul ref={trendingRef}>
                             {trendingMovies.map((movie, index) => (
                                 <li key={`trending-${movie.$id}`}>
                                     <p>{index + 1}</p>
+                                    <Link to={`/movie/${movie.movie_id}`}>
                                     <img src={movie.poster_url} alt={movie.title} />
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
