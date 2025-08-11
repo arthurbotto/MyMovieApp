@@ -62,7 +62,7 @@ const App = () => {
                 if (filters.year) endpoint += `&primary_release_year=${filters.year}`;
                 if (filters.genre) endpoint += `&with_genres=${filters.genre}`;
             }
-            console.log("Fetching from:", endpoint);
+            //console.log("Fetching from:", endpoint);
 
             const response = await fetch(endpoint, API_OPTIONS);
         
@@ -71,7 +71,7 @@ const App = () => {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            console.log(data);
+            //console.log(data);
             
             if (data.Response === "False") {
                 setErrorMessage(data.Error || "An error occurred while fetching movies.");

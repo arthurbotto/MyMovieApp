@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 
 const years = Array.from({ length: 200 }, (_, i) => new Date().getFullYear() - i); // 2024, 2023...
 const ratings = Array.from({ length: 11 }, (_, i) => i); // 0 to 10
@@ -28,7 +28,9 @@ const FilterBar = ({ filters, setFilters, fetchMovies, debouncedSearchTerm }) =>
   return (
     
         <div className="filter-popup">
+          <label htmlFor='rating' className='sr-only'>Rating</label>
           <select
+            id='rating'
             className="filter-select"
             value={filters.rating}
             onChange={(e) => setFilters({ ...filters, rating: e.target.value })}
@@ -39,7 +41,9 @@ const FilterBar = ({ filters, setFilters, fetchMovies, debouncedSearchTerm }) =>
             ))}
           </select>
 
+          <label htmlFor='language' className='sr-only'>Language</label>
           <select
+            id='language'
             className="filter-select"
             value={filters.language}
             onChange={(e) => setFilters({ ...filters, language: e.target.value })}
@@ -50,7 +54,9 @@ const FilterBar = ({ filters, setFilters, fetchMovies, debouncedSearchTerm }) =>
             ))}
           </select>
 
+          <label htmlFor='year' className='sr-only'>Year</label>
           <select
+            id='year'
             className="filter-select"
             value={filters.year}
             onChange={(e) => setFilters({ ...filters, year: e.target.value })}
@@ -61,7 +67,9 @@ const FilterBar = ({ filters, setFilters, fetchMovies, debouncedSearchTerm }) =>
             ))}
           </select>
           
+          <label htmlFor='genre' className='sr-only'>Genre</label>
           <select
+            id='genre'
             className="filter-select"
             value={filters.genre}
             onChange={(e) => setFilters({ ...filters, genre: e.target.value })}
