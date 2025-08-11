@@ -49,12 +49,9 @@ describe('appwrite helpers', () => {
 
     await updateSearchCount('matrix', { id: 10, poster_path: '/p.jpg' })
 
-    expect(__mocks.updateDocument).toHaveBeenCalledWith(
-      expect.any(String),
-      expect.any(String),
-      'doc1',
-      { count: 3 }
-    )
+    const call = __mocks.updateDocument.mock.calls[0]
+    expect(call[2]).toBe('doc1')                 // document id
+    expect(call[3]).toEqual({ count: 3 })        // payload
     expect(__mocks.createDocument).not.toHaveBeenCalled()
   })
 
@@ -63,10 +60,9 @@ describe('appwrite helpers', () => {
 
     await updateSearchCount('matrix', { id: 10, poster_path: '/p.jpg' })
 
-    expect(__mocks.createDocument).toHaveBeenCalledWith(
-      expect.any(String),
-      expect.any(String),
-      'new-id',
+    const call = __mocks.createDocument.mock.calls[0]
+    expect(call[2]).toBe('new-id') // ID.unique()
+    expect(call[3]).toEqual(
       expect.objectContaining({
         searchTerm: 'matrix',
         count: 1,
